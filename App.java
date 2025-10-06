@@ -1,7 +1,6 @@
-public class App{
+public class App {
     public static void main(String[] args) throws Exception {
-        Menu menu = new Menu();
-        menu.exibirMenu();
+        Menu.exibirMenu();
 
         Arma arma1 = new Arma("Quebra crânio", 2, "armaPesada");
         Jogador player1 = new Jogador("Pukeman", 50, 4, 2, 1, 3, arma1, null, 10);
@@ -16,5 +15,5 @@ public class App{
         System.out.println();
 
         combate1.iniciarCombate(player1, adversario1);
-    } 
+    }
 }

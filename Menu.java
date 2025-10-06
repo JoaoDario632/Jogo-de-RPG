@@ -13,6 +13,7 @@ public class Menu {
             System.out.println("1. Começar Jogo");
             System.out.println("2. História");
             System.out.println("3. Sair");
+
             System.out.print("Escolha uma opção: ");
 
             int opcao = sc.nextInt();
@@ -30,6 +31,7 @@ public class Menu {
                 case 3:
                     System.out.println("Saindo do jogo... Até a próxima!");
                     rodando = false;
+                    sc.close();
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -62,7 +64,7 @@ public class Menu {
         System.out.print("Digite o número da arma desejada: ");
 
         int escolha = sc.nextInt();
-        sc.nextLine(); 
+        sc.nextLine();
         if (escolha >= 1 && escolha <= armas.length) {
             System.out.println("Você escolheu: " + armas[escolha - 1].getNome());
             return armas[escolha - 1];

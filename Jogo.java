@@ -1,9 +1,11 @@
 import java.util.Scanner;
+ 
 
 public class Jogo {
     private Scanner sc;
     private Arma arma;
     private Armadura armadura;
+    private int placar = 0; 
 
     public Jogo(Scanner sc) {
         this.sc = sc;
@@ -44,5 +46,56 @@ public class Jogo {
         }
 
         System.out.println("\nSua aventura está prestes a começar...");
+        jogarFases(nome);
+
+        System.out.println("\n=== Fim do Jogo ===");
+        System.out.println("Placar final de " + nome + ": " + placar + " pontos!");
+    }
+
+    private void jogarFases(String nome) {
+        String[] inimigos = {"Goblin", "Orc", "Dragão"};
+        int[] vidaInimigo = {20, 35, 60};
+        int[] danoInimigo = {5, 8, 12};
+
+        int vidaHeroi = 50 + armadura.getConstanteDefesa(); // vida base + defesa
+
+        for (int fase = 0; fase < inimigos.length; fase++) {
+            System.out.println("\n=== Fase " + (fase+1) + " ===");
+            System.out.println("Um " + inimigos[fase] + " aparece!");
+            int vidaMonstro = vidaInimigo[fase];
+
+            while (vidaMonstro > 0 && vidaHeroi > 0) {
+                System.out.println("\nSua vida: " + vidaHeroi + " | Vida do " + inimigos[fase] + ": " + vidaMonstro);
+                System.out.println("1. Atacar");
+                System.out.println("2. Defender");
+                System.out.print("Escolha sua ação: ");
+                int escolha = sc.nextInt();
+                sc.nextLine();
+
+                if (escolha == 1) {
+                    System.out.println("Você ataca com sua " + arma.getNome() + "!");
+                    vidaMonstro -= arma.getConstanteDano();
+                } else if (escolha == 2) {
+                    System.out.println("Você se defende!");
+                    vidaHeroi -= Math.max(0, danoInimigo[fase] - armadura.getConstanteDefesa());
+                    continue;
+                } else {
+                    System.out.println("Você hesitou e perdeu a chance!");
+                }
+
+                if (vidaMonstro > 0) {
+                    vidaHeroi -= danoInimigo[fase];
+                    System.out.println("O " + inimigos[fase] + " ataca! Você perde " + danoInimigo[fase] + " de vida.");
+                }
+            }
+
+            if (vidaHeroi <= 0) {
+                System.out.println("\nVocê foi derrotado pelo " + inimigos[fase] + "!");
+                break;
+            } else {
+                System.out.println("\nVocê derrotou o " + inimigos[fase] + "!");
+                placar += 100 * (fase + 1); 
+            }
+        }
     }
 }

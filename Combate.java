@@ -23,7 +23,7 @@ public class Combate {
                     + atacado.getNome());
                     infligirDano(atacante, atacado, arma);
                 } else System.out.println("Resultado " + ataqueForca + " (D20: " + atacante.getRolagem() + " + For: " + atacante.getForca() +
-                    " + K: 2)! " + atacante.getNome() + " ERROUUUUUUUU!!!!!\n");
+                    " + K: 2)! " + atacante.getNome() + " Errou\n");
                 break;
                 
             case "armaLeve":
@@ -37,12 +37,12 @@ public class Combate {
                     + atacado.getNome());
                     infligirDano(atacante, atacado, arma);
                 }else System.out.println("Resultado " + ataqueDestreza + " (D20: " + atacante.getRolagem() + " + Dex: " + atacante.getDestreza() +
-                    " + K: 2)! " + atacante.getNome() + " ERROUUUUUUUU!!!!!\n");
+                    " + K: 2)! " + atacante.getNome() + " Errou\n");
                 break;
 
             default:
                 System.out.println("Categoria de arma não encontrada. Não será possível " + atacante.getNome() +
-                                    " atacar.\nBoa sorte! KSJSKSJSDJKKJS");
+                                    " atacar.\nBoa sorte!");
                 break;
         }
     }
@@ -99,7 +99,7 @@ public class Combate {
 
             default:
                 System.out.println("Categoria de arma não encontrada. Não foi possível " + infligidor.getNome() +
-                " infligir dano.\nBoa sorte! KSJSKSJSDJKKJS");
+                " infligir dano.\nBoa sorte!");
                 break;
         }
 

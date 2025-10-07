@@ -45,4 +45,15 @@ public class Armadura extends Equipamento {
             return null;
         }
     }
+
+    // ======= Novo método: aumentar defesa =======
+    public void aumentarDefesa(int incremento) {
+        this.constanteDefesa += incremento;
+        System.out.println("Sua armadura foi aprimorada! Defesa atual: " + this.constanteDefesa);
+    }
+
+    @Override
+    public String toString() {
+        return getNome() + " (Defesa: " + constanteDefesa + ")";
+    }
 }

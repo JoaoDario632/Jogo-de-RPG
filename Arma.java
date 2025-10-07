@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Arma extends Equipamento{
+public class Arma extends Equipamento {
     private int constanteDano;
     private String categoria;
 
@@ -13,6 +13,7 @@ public class Arma extends Equipamento{
     public int getConstanteDano() {
         return constanteDano;
     }
+
     public void setConstanteDano(int constanteDano) {
         this.constanteDano = constanteDano;
     }
@@ -20,10 +21,20 @@ public class Arma extends Equipamento{
     public String getCategoria() {
         return categoria;
     }
+
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-     public static Arma escolherArma(Scanner sc) {
+
+    // ✅ Método que o Jogo.java usa ao subir de nível
+    public void aumentarDano(int incremento) {
+        if (incremento > 0) {
+            this.constanteDano += incremento;
+            System.out.println("Sua arma foi aprimorada! Dano aumentado em +" + incremento);
+        }
+    }
+
+    public static Arma escolherArma(Scanner sc) {
         System.out.println("\n=== Escolha sua Arma ===");
         System.out.println("1. Espada (Dano 10, Categoria: Corpo a Corpo)");
         System.out.println("2. Machado (Dano 12, Categoria: Corpo a Corpo)");
@@ -31,12 +42,15 @@ public class Arma extends Equipamento{
         System.out.print("Digite sua escolha: ");
 
         int escolha = sc.nextInt();
-        sc.nextLine(); 
+        sc.nextLine();
 
         switch (escolha) {
-            case 1: return new Arma("Espada", 10, "Corpo a Corpo");
-            case 2: return new Arma("Machado", 12, "Corpo a Corpo");
-            case 3: return new Arma("Arco", 8, "Distância");
+            case 1:
+                return new Arma("Espada", 10, "Corpo a Corpo");
+            case 2:
+                return new Arma("Machado", 12, "Corpo a Corpo");
+            case 3:
+                return new Arma("Arco", 8, "Distância");
             default:
                 System.out.println("Opção inválida. Você ficará sem arma!");
                 return null;

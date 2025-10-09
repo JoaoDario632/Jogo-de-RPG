@@ -199,7 +199,7 @@ public class Jogo {
                 dano1 = arma1.getConstanteDano();
                 if (random.nextInt(100) < 15) {
                     dano1 *= 2;
-                    System.out.println("💥 Golpe crítico de " + nome1 + "!");
+                    System.out.println("Golpe crítico de " + nome1 + "!");
                 }
             } else if (acao1 == 2) {
                 defendeu1 = true;
@@ -223,7 +223,7 @@ public class Jogo {
                 dano2 = arma2.getConstanteDano();
                 if (random.nextInt(100) < 15) {
                     dano2 *= 2;
-                    System.out.println("💥 Golpe crítico de " + nome2 + "!");
+                    System.out.println("Golpe crítico de " + nome2 + "!");
                 }
             } else if (acao2 == 2) {
                 defendeu2 = true;
@@ -232,7 +232,6 @@ public class Jogo {
                 pocaoUsada2 = true;
             }
 
-            // Aplicar resultados
             if (acao1 == 1 && !defendeu2) vida2 -= Math.max(0, dano1 - armadura2.getConstanteDefesa());
             if (acao2 == 1 && !defendeu1) vida1 -= Math.max(0, dano2 - armadura1.getConstanteDefesa());
 
@@ -241,11 +240,11 @@ public class Jogo {
 
         System.out.println("\n🏁 Fim da batalha!");
         if (vida1 > 0 && vida2 <= 0) {
-            System.out.println("🎉 " + nome1 + " venceu!");
+            System.out.println("Meus Parabéns, o" + nome1 + " venceu!");
         } else if (vida2 > 0 && vida1 <= 0) {
-            System.out.println("🎉 " + nome2 + " venceu!");
+            System.out.println("\"Meus Parabéns, o" + nome2 + " venceu!");
         } else {
-            System.out.println("🤝 Empate! Ambos caíram ao mesmo tempo!");
+            System.out.println("Empate! Ambos caíram ao mesmo tempo!");
         }
     }
 
